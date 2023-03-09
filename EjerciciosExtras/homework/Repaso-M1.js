@@ -16,7 +16,16 @@ const {
 
 var countArray = function(array) {
     // Tu código aca:
-    
+    let sum = 0
+    let n = array.length
+for (let i = 0; i < n; i++) {
+  if (Array.isArray(array[i])){
+    sum = sum + countArray(array[i])
+  }else{
+    sum = sum +array[i]
+  } 
+}
+return sum
 }
 
 
@@ -39,6 +48,19 @@ var countArray = function(array) {
 
 var countProps = function(obj) {
     // Tu código aca:
+    let count = 0
+    for(let propi in obj){
+        count ++
+    }
+if (typeof propi === "object"){
+    count += countProps(obj[propi])
+}if (Array.isArray(obj[propi])) {
+    for (let i = 0; i <obj[propi].length; i++) {
+      count += countProps(obj[propi][i])
+        
+    }
+}
+return count
 
 }
 
@@ -53,7 +75,16 @@ var countProps = function(obj) {
 
 LinkedList.prototype.changeNotNumbers = function(){
     // Tu código aca:
-
+    var current = this.head
+    var changes = 0
+    while(current !== null){
+        if (isNaN(current.value)){
+            current.value = 'Kiricocho'
+            changes++
+        }
+        current =current.next
+    }
+return changes
 }
 
 
@@ -82,6 +113,9 @@ var mergeQueues = function(queueOne, queueTwo) {
 
 var closureMult = function(multiplier) {
     // Tu código aca:
+    return function (num){
+        return multiplier *num
+    }
 
 }
 
@@ -89,6 +123,11 @@ var closureMult = function(multiplier) {
 // que debe retornar la suma total de los valores dentro de cada nodo del arbol
 BinarySearchTree.prototype.sum = function() {
     // Tu código aca:
+    let sumar = 0 
+if(this.value !== null) sumar += this.value
+if(this.right !== null) sumar += this.right.sum()
+if(this.left !==null) sumar += this.left.sum()
+return sumar
 
 }
 
