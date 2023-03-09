@@ -12,7 +12,14 @@ return contador}
 
 
 console.log(BinarioADecimal("111"))
-function DecimalABinario(num) {}
+function DecimalABinario(num) {
+   console.log(num);
+while(num > 0 ) {
+var mod =num % 2;
+num = num
+}
+
+}
 
 module.exports = {
    BinarioADecimal,
